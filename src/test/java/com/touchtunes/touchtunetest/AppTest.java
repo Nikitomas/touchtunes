@@ -13,17 +13,26 @@ import com.pages.PlaylistPage;
 
 public class AppTest extends BaseUITest {
 /*
- * Normally, i would use an API call to make sure that all previously created playlists 
+ * 1)Normally, i would use an API call to make sure that all previously created playlists 
  * are deleted and make sure to delete the one that this test creates but i don't have
  * that access now.
+ * 2)I declared 2 variables for login and didnt define them so obviously it wont work but
+ * this is just to avoid committing my spotify username and password :)
+ *  
+ * 
+ * Nick
  * */
+	
+	private String loginUser;
+	private String loginPass;
+	
 	@Test(groups = { "Qa-Exercise" })
 	public void testCreatePlayList() throws FrameworkException, InterruptedException {
 		
 		reporter.info("Logging into the application");
 		LoginPage login = new LoginPage(driver);
 		LandingPage landingPage = new LandingPage(driver);
-		landingPage = login.login();
+		landingPage = login.login(loginUser,loginPass);
 		
 		reporter.info("Creating a playlist");
 		CreatePlayListPage createListPage = new CreatePlayListPage(driver);

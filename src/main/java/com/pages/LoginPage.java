@@ -22,10 +22,10 @@ public class LoginPage extends BasePage {
 	@CustomFindBy(css="div[role='alert']", waitFor = Until.Visible)
 	public IBaseElement wrongLoginAlert;
 	
-	public LandingPage login() throws FrameworkException {
+	public LandingPage login(String user, String pass) throws FrameworkException {
 		loginBtn.click();
-		userName.setText("nicolas.touma@gmail.com");
-		password.setText("1234abcd!");
+		userName.setText(user);
+		password.setText(pass);
 		loginBtn.click();
 		return new LandingPage(driver);
 	}
